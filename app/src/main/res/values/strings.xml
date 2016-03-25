@@ -2,4 +2,8 @@
     <string name="app_name">Galvandroid</string>
     <string name="gcell_button">Galvanic Cell</string>
     <string name="info_button">About Galvanic Cells</string>
+
+    <string name="title_activity_galvanic_cell">GalvanicCellActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
