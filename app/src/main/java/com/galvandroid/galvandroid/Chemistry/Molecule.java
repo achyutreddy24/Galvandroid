@@ -3,7 +3,7 @@ package com.galvandroid.galvandroid.Chemistry;
 import java.util.HashMap;
 
 public class Molecule {
-    private HashMap<Atom, Integer> form = new HashMap<>();
+    private HashMap<Atom, Integer> form;
     private int charge;
 
     public Molecule(HashMap<Atom, Integer> x, int c) {
