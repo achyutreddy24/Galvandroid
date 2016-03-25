@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Galvandroid</string>
+    <string name="gcell_button">Galvanic Cell</string>
+    <string name="info_button">About Galvanic Cells</string>
 </resources>

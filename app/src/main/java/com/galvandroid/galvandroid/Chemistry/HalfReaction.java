@@ -1,5 +1,4 @@
 package com.galvandroid.galvandroid.Chemistry;
 
-public class InformationAccess {
-
+public class HalfReaction {
 }
