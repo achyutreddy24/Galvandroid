@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class CustomHalfReaction{
     private HalfReaction baseReaction;
     private HashMap<Molecule, Float> molarities;
+    private int multiplier;
 
     public CustomHalfReaction(HalfReaction hf, HashMap<Molecule, Float> m) {
         baseReaction = hf;
@@ -25,5 +26,13 @@ public class CustomHalfReaction{
 
     public void setMolarities(HashMap<Molecule, Float> molarities) {
         this.molarities = molarities;
+    }
+
+    public int getMultiplier() {
+        return multiplier;
+    }
+
+    public void setMultiplier(int multiplier) {
+        this.multiplier = multiplier;
     }
 }
