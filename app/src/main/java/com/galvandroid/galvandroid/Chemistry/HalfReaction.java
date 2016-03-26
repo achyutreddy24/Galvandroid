@@ -6,11 +6,13 @@ public class HalfReaction {
     private HashMap<Molecule, Integer> reactants;
     private HashMap<Molecule, Integer> products;
     private int electrons;
+    private float reductionPotential;
 
-    public HalfReaction(HashMap<Molecule, Integer> r, HashMap<Molecule, Integer> p, int e) {
+    public HalfReaction(HashMap<Molecule, Integer> r, HashMap<Molecule, Integer> p, int e, float red) {
         reactants = r;
         products = p;
         electrons = e;
+        reductionPotential = red;
     }
 
     @Override
@@ -30,6 +32,10 @@ public class HalfReaction {
         result = 31 * result + products.hashCode();
         result = 31 * result + electrons;
         return result;
+    }
+
+    public float getReductionPotential() {
+        return reductionPotential;
     }
 
     public HashMap<Molecule, Integer> getReactants() {
