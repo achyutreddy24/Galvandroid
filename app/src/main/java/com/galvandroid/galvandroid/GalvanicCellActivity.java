@@ -1,13 +1,19 @@
 package com.galvandroid.galvandroid;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageButton;
 
 
 public class GalvanicCellActivity extends AppCompatActivity {
+
+    private ImageButton lBeaker;
+    private ImageButton rBeaker;
+
     /**
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
@@ -48,6 +54,25 @@ public class GalvanicCellActivity extends AppCompatActivity {
         setContentView(R.layout.activity_galvanic_cell);
 
         mContentView = findViewById(R.id.fullscreen_content);
+
+        lBeaker = (ImageButton) findViewById(R.id.left_beaker);
+        rBeaker = (ImageButton) findViewById(R.id.right_beaker);
+
+        lBeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SelectHRxnActivity.class);
+                startActivity(i);
+            }
+        });
+
+        rBeaker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), GalvanicCellActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 

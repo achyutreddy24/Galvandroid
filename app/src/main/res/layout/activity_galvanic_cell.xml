@@ -15,49 +15,51 @@
         >
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
+            android:layout_alignLeft="@+id/left_beaker"
+            android:layout_alignStart="@+id/left_beaker"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="26dp"
             android:layout_marginStart="26dp"
-            android:src="@drawable/vector_drawable_metal"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/imageView"
-            android:layout_alignStart="@+id/imageView"/>
+            android:src="@drawable/vector_drawable_metal"/>
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/left_beaker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:src="@drawable/vector_drawable_beaker"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="29dp"
-            android:layout_marginStart="29dp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView4"
-            android:src="@drawable/vector_drawable_metal"
             android:layout_alignTop="@+id/imageView2"
-            android:layout_alignRight="@+id/imageView3"
-            android:layout_alignEnd="@+id/imageView3"
-            android:layout_marginRight="40dp"
-            android:layout_marginEnd="40dp"/>
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp"
+            android:background="@null"
+            android:src="@drawable/vector_drawable_beaker"/>
 
         <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView3"
-            android:src="@drawable/vector_drawable_beaker"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/imageView"/>
-    </RelativeLayout>
+            android:layout_alignEnd="@+id/right_beaker"
+            android:layout_alignRight="@+id/right_beaker"
+            android:layout_alignTop="@+id/imageView2"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:src="@drawable/vector_drawable_metal"/>
 
+        <ImageButton
+            android:id="@+id/right_beaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/left_beaker"
+            android:background="@null"
+            android:src="@drawable/vector_drawable_beaker"/>
+    </RelativeLayout>
 
 
 </FrameLayout>

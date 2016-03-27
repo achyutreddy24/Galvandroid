@@ -1,8 +1,9 @@
 package com.galvandroid.galvandroid.Chemistry;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class HalfReaction {
+public class HalfReaction implements Serializable {
     private HashMap<Molecule, Integer> reactants;
     private HashMap<Molecule, Integer> products;
     private int electrons;
@@ -48,5 +49,10 @@ public class HalfReaction {
 
     public int getElectrons() {
         return electrons;
+    }
+
+    @Override
+    public String toString() {
+        return "";
     }
 }
