@@ -7,9 +7,9 @@ public class HalfReaction implements Serializable {
     private HashMap<Molecule, Integer> reactants;
     private HashMap<Molecule, Integer> products;
     private int electrons;
-    private float reductionPotential;
+    private double reductionPotential;
 
-    public HalfReaction(HashMap<Molecule, Integer> r, HashMap<Molecule, Integer> p, int e, float red) {
+    public HalfReaction(HashMap<Molecule, Integer> r, HashMap<Molecule, Integer> p, int e, double red) {
         reactants = r;
         products = p;
         electrons = e;
@@ -35,7 +35,7 @@ public class HalfReaction implements Serializable {
         return result;
     }
 
-    public float getReductionPotential() {
+    public double getReductionPotential() {
         return reductionPotential;
     }
 
