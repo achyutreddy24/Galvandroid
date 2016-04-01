@@ -1,6 +1,8 @@
 package com.galvandroid.galvandroid.Chemistry;
 
 
+import java.util.HashMap;
+
 public class Util {
 
     private static final double faraday = 0.0592;
@@ -11,7 +13,7 @@ public class Util {
         double bred = b.getBaseReaction().getReductionPotential();
         int n = lcmcal(a.getBaseReaction().getElectrons(), b.getBaseReaction().getElectrons()); //Gets LCM of the two electron counts
 
-        if(ared >= bred) {
+        if (ared >= bred) {
             standard = ared + (-1 * bred);
         } else {
             standard = (-1 * ared) + bred;
@@ -35,5 +37,63 @@ public class Util {
         return (s);
     }
 
+    public static Molecule parsemolecule(String x) {
+        HashMap<Atom, Integer> atoms = new HashMap<>();
+        int coef = 0; // coefficent
+        int mark = 0;
+        String cofe = "";
+
+        for (int i = 0; i < x.length(); i++) {
+            if (isInteger(x.substring(i, i + 1))) {
+                cofe += x.substring(i, i + 1);
+            } else {
+                mark = i;
+                break;
+            }
+        }
+        coef = Integer.parseInt(cofe); // will return later
+        for (int i = mark; i < x.length(); i++) {
+            String symbol = "";
+            String sub_string = "";
+            int subscript = 0;
+
+            if (x.substring(mark, mark + 1).equals("+") || x.substring(mark, mark + 1).equals("-")) {
+                break;
+            }
+            while (!isInteger(x.substring(mark, mark + 1))) {
+                symbol += x.substring(mark, mark + 1);
+                mark++;
+            }
+            while (isInteger(x.substring(mark, mark + 1))) {
+                sub_string += x.substring(mark, mark + 1);
+                mark++;
+            }
+            subscript = Integer.parseInt(sub_string);
+            atoms.put(AtomConstants.getAtom(symbol), subscript);
+
+        }
+        int charge = Integer.parseInt(x.substring(mark + 1));
+        return new Molecule(atoms, charge);
+    }
+
+    public static boolean isInteger(String s) {
+        return isInteger(s, 10);
+    }
+
+    public static boolean isInteger(String s, int radix) {
+        if (s.isEmpty())
+            return false;
+        for (int i = 0; i < s.length(); i++) {
+            if (i == 0 && s.charAt(i) == '-') {
+                if (s.length() == 1)
+                    return false;
+                else
+                    continue;
+            }
+            if (Character.digit(s.charAt(i), radix) < 0)
+                return false;
+        }
+        return true;
+    }
 }
 

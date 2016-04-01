@@ -16,4 +16,8 @@ public class AtomConstants {
     public static HashMap<String, Atom> getAtoms() {
         return atoms;
     }
+
+    public static Atom getAtom(String s) {
+        return atoms.get(s);
+    }
 }
