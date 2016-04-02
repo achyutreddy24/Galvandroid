@@ -57,11 +57,11 @@ public class HalfReaction implements Serializable {
         for (Map.Entry<Molecule, Integer> entry : reactants.entrySet()) {
             Molecule key = entry.getKey();
             Integer value = entry.getValue();
-            r += value + key.toString() + " ";
+            r += value + key.toString() + " + ";
         }
 
         r += electrons + "e" + "<sup><small>" + "-" + "</small></sup>";
-        r += "→ ";
+        r += " → ";
 
         for (Map.Entry<Molecule, Integer> entry : products.entrySet()) {
             Molecule key = entry.getKey();

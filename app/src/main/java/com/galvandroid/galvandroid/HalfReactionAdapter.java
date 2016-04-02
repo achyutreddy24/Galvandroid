@@ -39,6 +39,8 @@ public class HalfReactionAdapter extends RecyclerView.Adapter<HalfReactionAdapte
         HalfReaction ci = hreactionList.get(i);
         final HalfReaction hreaction = hreactionList.get(i);
         hreactionViewHolder.text.setText(Html.fromHtml(hreaction.toString()));
+        String red = "ε° " + String.valueOf(hreaction.getReductionPotential());
+        hreactionViewHolder.eRed.setText(red);
         hreactionViewHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,12 +114,14 @@ public class HalfReactionAdapter extends RecyclerView.Adapter<HalfReactionAdapte
     public static class HalfReactionViewHolder extends RecyclerView.ViewHolder {
 
         TextView text;
+        TextView eRed;
         CardView card;
 
         public HalfReactionViewHolder(View v) {
             super(v);
             card = (CardView) v.findViewById(R.id.card_view);
             text = (TextView) v.findViewById(R.id.formula);
+            eRed = (TextView) v.findViewById(R.id.e_red);
         }
     }
 }
