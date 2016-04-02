@@ -144,7 +144,7 @@ public class Util {
         return (s);
     }
 
-    public static ArrayList<Molecule> getAqueousconc(CustomHalfReaction f){
+    public static ArrayList<Molecule> getAqueous(CustomHalfReaction f){
         HalfReaction target = f.getBaseReaction();
         double conc =0;
         ArrayList<Molecule> aqueous = new ArrayList<Molecule>();
@@ -154,5 +154,7 @@ public class Util {
         }
         return aqueous;
     }
+
+
 }
 
