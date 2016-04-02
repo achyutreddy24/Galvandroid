@@ -8,6 +8,19 @@ public class Util {
 
     private static final double faraday = 0.0592;
 
+    public static CustomHalfReaction getAnode(CustomHalfReaction a, CustomHalfReaction b) {
+        double standard;
+        double ared = a.getBaseReaction().getReductionPotential();
+        double bred = b.getBaseReaction().getReductionPotential();
+        int n = lcmcal(a.getBaseReaction().getElectrons(), b.getBaseReaction().getElectrons()); //Gets LCM of the two electron counts
+
+        if (ared >= bred) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
     public static double getNonStandard(CustomHalfReaction a, CustomHalfReaction b) {
         double standard;
         double ared = a.getBaseReaction().getReductionPotential();
