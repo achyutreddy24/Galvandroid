@@ -1,19 +1,18 @@
 package com.galvandroid.galvandroid.Chemistry;
 
+import android.content.Context;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import static com.galvandroid.galvandroid.Chemistry.Util.parseHalfReaction;
 
 public class StandardHalfReactionList {
     public static ArrayList<HalfReaction> halfreactions;
 
-    public static void initialize() {
+    public static void initialize(Context c) {
+        AtomConstants.initialize(c);
         halfreactions = new ArrayList<>();
-        HashMap<Molecule, Integer> r = new HashMap<>();
-        HashMap<Molecule, Integer> p = new HashMap<>();
-        //new Molecule(new HashMap<Atom, Integer>().put(AtomConstants.getAtoms().get("F"), 0), 0);
-
-        //r.put(, 2);
-        halfreactions.add(new HalfReaction(r, p, 2, 2.87));
+        halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
     }
 
     public static ArrayList<HalfReaction> getHalfreactions() {

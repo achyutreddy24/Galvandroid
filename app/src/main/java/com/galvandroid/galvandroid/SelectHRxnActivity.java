@@ -34,6 +34,7 @@ public class SelectHRxnActivity extends AppCompatActivity implements SearchView.
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
+        StandardHalfReactionList.initialize(this);
         items = StandardHalfReactionList.getHalfreactions();
         ca = new HalfReactionAdapter(items);
         recList.setAdapter(ca);

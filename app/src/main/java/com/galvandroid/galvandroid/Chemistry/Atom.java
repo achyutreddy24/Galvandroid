@@ -38,4 +38,9 @@ public class Atom {
     public int getAtomic_number() {
         return atomic_number;
     }
+
+    @Override
+    public String toString() {
+        return symbol;
+    }
 }

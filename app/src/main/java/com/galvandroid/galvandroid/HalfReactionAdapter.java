@@ -3,6 +3,7 @@ package com.galvandroid.galvandroid;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class HalfReactionAdapter extends RecyclerView.Adapter<HalfReactionAdapte
     public void onBindViewHolder(HalfReactionViewHolder hreactionViewHolder, int i) {
         HalfReaction ci = hreactionList.get(i);
         final HalfReaction hreaction = hreactionList.get(i);
-        hreactionViewHolder.text.setText(ci.toString());
+        hreactionViewHolder.text.setText(Html.fromHtml(hreaction.toString()));
         hreactionViewHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

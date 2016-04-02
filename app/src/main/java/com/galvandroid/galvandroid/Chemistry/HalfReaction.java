@@ -1,15 +1,16 @@
 package com.galvandroid.galvandroid.Chemistry;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class HalfReaction implements Serializable {
-    private HashMap<Molecule, Integer> reactants;
-    private HashMap<Molecule, Integer> products;
+    private LinkedHashMap<Molecule, Integer> reactants;
+    private LinkedHashMap<Molecule, Integer> products;
     private int electrons;
     private double reductionPotential;
 
-    public HalfReaction(HashMap<Molecule, Integer> r, HashMap<Molecule, Integer> p, int e, double red) {
+    public HalfReaction(LinkedHashMap<Molecule, Integer> r, LinkedHashMap<Molecule, Integer> p, int e, double red) {
         reactants = r;
         products = p;
         electrons = e;
@@ -21,8 +22,7 @@ public class HalfReaction implements Serializable {
         if (x instanceof HalfReaction) {
             HalfReaction m = (HalfReaction) x;
             return reactants.equals(m.getReactants()) && products.equals(m.getProducts()) && electrons == m.getElectrons();
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -39,11 +39,11 @@ public class HalfReaction implements Serializable {
         return reductionPotential;
     }
 
-    public HashMap<Molecule, Integer> getReactants() {
+    public LinkedHashMap<Molecule, Integer> getReactants() {
         return reactants;
     }
 
-    public HashMap<Molecule, Integer> getProducts() {
+    public LinkedHashMap<Molecule, Integer> getProducts() {
         return products;
     }
 
@@ -53,6 +53,21 @@ public class HalfReaction implements Serializable {
 
     @Override
     public String toString() {
-        return "";
+        String r = "";
+        for (Map.Entry<Molecule, Integer> entry : reactants.entrySet()) {
+            Molecule key = entry.getKey();
+            Integer value = entry.getValue();
+            r += value + key.toString() + " ";
+        }
+
+        r += electrons + "e" + "<sup><small>" + "-" + "</small></sup>";
+        r += "→ ";
+
+        for (Map.Entry<Molecule, Integer> entry : products.entrySet()) {
+            Molecule key = entry.getKey();
+            Integer value = entry.getValue();
+            r += value + key.toString() + " ";
+        }
+        return r;
     }
 }

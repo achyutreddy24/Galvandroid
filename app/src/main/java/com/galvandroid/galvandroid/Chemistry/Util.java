@@ -2,6 +2,7 @@ package com.galvandroid.galvandroid.Chemistry;
 
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Util {
 
@@ -24,7 +25,7 @@ public class Util {
     }
 
     public static Molecule parsemolecule(String x) {
-        HashMap<Atom, Integer> atoms = new HashMap<>();
+        LinkedHashMap<Atom, Integer> atoms = new LinkedHashMap<>();
         int coef = 0; // coefficent
         int mark = 0;
         String cofe = "";
@@ -58,7 +59,7 @@ public class Util {
             atoms.put(AtomConstants.getAtom(symbol), subscript);
 
         }
-        int charge = Integer.parseInt(x.substring(mark + 1));
+        int charge = Integer.parseInt(x.substring(mark));
         return new Molecule(atoms, charge);
     }
 
@@ -67,14 +68,14 @@ public class Util {
         String[] reac = rxn[0].trim().split("\\s\\+\\s");
         String[] prod = rxn[1].trim().split("\\s\\+\\s");
 
-        HashMap<Molecule, Integer> r = toMoleculeHashMap(reac);
-        HashMap<Molecule, Integer> p = toMoleculeHashMap(prod);
+        LinkedHashMap<Molecule, Integer> r = toMoleculeHashMap(reac);
+        LinkedHashMap<Molecule, Integer> p = toMoleculeHashMap(prod);
 
         return new HalfReaction(r, p, e, red);
     }
 
-    private static HashMap<Molecule, Integer> toMoleculeHashMap(String[] arr) {
-        HashMap<Molecule, Integer> molecules = new HashMap<>();
+    private static LinkedHashMap<Molecule, Integer> toMoleculeHashMap(String[] arr) {
+        LinkedHashMap<Molecule, Integer> molecules = new LinkedHashMap<>();
         for (String s : arr) {
             molecules.put(parsemolecule(s.trim()), getCoef(s.trim()));
         }

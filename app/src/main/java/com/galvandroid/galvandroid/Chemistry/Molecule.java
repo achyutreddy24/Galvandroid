@@ -1,12 +1,15 @@
 package com.galvandroid.galvandroid.Chemistry;
 
-import java.util.HashMap;
+import android.text.Html;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Molecule {
-    private HashMap<Atom, Integer> form;
+    private LinkedHashMap<Atom, Integer> form;
     private int charge;
 
-    public Molecule(HashMap<Atom, Integer> x, int c) {
+    public Molecule(LinkedHashMap<Atom, Integer> x, int c) {
         form = x;
         charge = c;
     }
@@ -27,11 +30,31 @@ public class Molecule {
         return form != null ? form.hashCode() : 0;
     }
 
-    public HashMap<Atom, Integer> getForm() {
+    public LinkedHashMap<Atom, Integer> getForm() {
         return form;
     }
 
     public int getCharge() {
         return charge;
+    }
+
+    @Override
+    public String toString() {
+        String r = "";
+        for (Map.Entry<Atom, Integer> entry : form.entrySet()) {
+            Atom key = entry.getKey();
+            Integer value = entry.getValue();
+            r += key.toString() + "<sub><small>" + value + "</small></sub>";
+        }
+        return r + getFormatCharge();
+    }
+
+    private String getFormatCharge() {
+        if (charge > 0) {
+            return "<sup><small>" + charge + "+" + "</small></sup>";
+        } else if (charge < 0) {
+            return "<sup><small>" + Math.abs(charge) + "-" + "</small></sup>";
+        }
+        return "";
     }
 }
