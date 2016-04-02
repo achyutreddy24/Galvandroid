@@ -155,6 +155,14 @@ public class Util {
         return aqueous;
     }
 
+    public static double getAqueousconc(ArrayList<Molecule> a){
+        double conc = 1;
+
+        for (int f =0;f<a.size();f++)
+            conc = conc*conc;
+
+        return 1.0;
+    }
 
 }
 
