@@ -23,20 +23,6 @@ public class Util {
         return faraday / n * Math.log(q);
     }
 
-
-    private static int lcmcal(int i, int y) {
-        int n, x, s = 1, t = 1;
-        for (n = 1; ; n++) {
-            s = i * n;
-            for (x = 1; t < s; x++) {
-                t = y * x;
-            }
-            if (s == t)
-                break;
-        }
-        return (s);
-    }
-
     public static Molecule parsemolecule(String x) {
         HashMap<Atom, Integer> atoms = new HashMap<>();
         int coef = 0; // coefficent
@@ -76,11 +62,43 @@ public class Util {
         return new Molecule(atoms, charge);
     }
 
-    public static boolean isInteger(String s) {
+    public static HalfReaction parseHalfReaction(String s, int e, double red) {
+        String[] rxn = s.split("=");
+        String[] reac = rxn[0].trim().split("\\s\\+\\s");
+        String[] prod = rxn[1].trim().split("\\s\\+\\s");
+
+        HashMap<Molecule, Integer> r = toMoleculeHashMap(reac);
+        HashMap<Molecule, Integer> p = toMoleculeHashMap(prod);
+
+        return new HalfReaction(r, p, e, red);
+    }
+
+    private static HashMap<Molecule, Integer> toMoleculeHashMap(String[] arr) {
+        HashMap<Molecule, Integer> molecules = new HashMap<>();
+        for (String s : arr) {
+            molecules.put(parsemolecule(s.trim()), getCoef(s.trim()));
+        }
+        return molecules;
+    }
+
+    private static int getCoef(String s) {
+        String cofe = "";
+
+        for (int i = 0; i < s.length(); i++) {
+            if (isInteger(s.substring(i, i + 1))) {
+                cofe += s.substring(i, i + 1);
+            } else {
+                break;
+            }
+        }
+        return Integer.parseInt(cofe);
+    }
+
+    private static boolean isInteger(String s) {
         return isInteger(s, 10);
     }
 
-    public static boolean isInteger(String s, int radix) {
+    private static boolean isInteger(String s, int radix) {
         if (s.isEmpty())
             return false;
         for (int i = 0; i < s.length(); i++) {
@@ -94,6 +112,19 @@ public class Util {
                 return false;
         }
         return true;
+    }
+
+    private static int lcmcal(int i, int y) {
+        int n, x, s = 1, t = 1;
+        for (n = 1; ; n++) {
+            s = i * n;
+            for (x = 1; t < s; x++) {
+                t = y * x;
+            }
+            if (s == t)
+                break;
+        }
+        return (s);
     }
 }
 
