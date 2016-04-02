@@ -1,6 +1,7 @@
 package com.galvandroid.galvandroid.Chemistry;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -29,6 +30,7 @@ public class Util {
 
         if (ared >= bred) {
             standard = ared + (-1 * bred);
+
         } else {
             standard = (-1 * ared) + bred;
         }
@@ -140,6 +142,17 @@ public class Util {
                 break;
         }
         return (s);
+    }
+
+    public static ArrayList<Molecule> getAqueousconc(CustomHalfReaction f){
+        HalfReaction target = f.getBaseReaction();
+        double conc =0;
+        ArrayList<Molecule> aqueous = new ArrayList<Molecule>();
+        for (Molecule key : f.getMolarities().keySet()){
+            if (key.getCharge() !=0)
+                aqueous.add(key);
+        }
+        return aqueous;
     }
 }
 
