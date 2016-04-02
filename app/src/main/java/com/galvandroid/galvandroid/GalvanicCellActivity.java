@@ -69,7 +69,7 @@ public class GalvanicCellActivity extends AppCompatActivity {
         rBeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), GalvanicCellActivity.class);
+                Intent i = new Intent(getApplicationContext(), SelectHRxnActivity.class);
                 startActivity(i);
             }
         });

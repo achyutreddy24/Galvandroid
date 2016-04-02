@@ -13,6 +13,13 @@ public class StandardHalfReactionList {
         AtomConstants.initialize(c);
         halfreactions = new ArrayList<>();
         halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
+        halfreactions.add(parseHalfReaction("1Ag1+2 = 1Ag1+1", 1, 1.99));
+        halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
+        halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
+        halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
+        halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
+        halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
+        halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
     }
 
     public static ArrayList<HalfReaction> getHalfreactions() {

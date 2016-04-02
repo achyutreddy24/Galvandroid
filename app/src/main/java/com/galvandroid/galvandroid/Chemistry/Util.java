@@ -38,13 +38,15 @@ public class Util {
                 break;
             }
         }
-        coef = Integer.parseInt(cofe); // will return later
+        //coef = Integer.parseInt(cofe); // will return later
+        int charge = 0;
         for (int i = mark; i < x.length(); i++) {
             String symbol = "";
             String sub_string = "";
-            int subscript = 0;
+            int subscript;
 
             if (x.substring(mark, mark + 1).equals("+") || x.substring(mark, mark + 1).equals("-")) {
+                charge = Integer.parseInt(x.substring(mark));
                 break;
             }
             while (!isInteger(x.substring(mark, mark + 1))) {
@@ -55,11 +57,10 @@ public class Util {
                 sub_string += x.substring(mark, mark + 1);
                 mark++;
             }
-            subscript = Integer.parseInt(sub_string);
+            subscript = "".equals(sub_string) ? 1 : Integer.parseInt(sub_string);
             atoms.put(AtomConstants.getAtom(symbol), subscript);
 
         }
-        int charge = Integer.parseInt(x.substring(mark));
         return new Molecule(atoms, charge);
     }
 
@@ -92,7 +93,7 @@ public class Util {
                 break;
             }
         }
-        return Integer.parseInt(cofe);
+        return "".equals(cofe) ? 0 : Integer.parseInt(cofe);
     }
 
     private static boolean isInteger(String s) {
