@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), GalvanicCellActivity.class);
-                HalfReaction hf = StandardHalfReactionList.getHalfreactions().get(8);
+                HalfReaction hf = StandardHalfReactionList.getHalfreactions().get(0);
                 HashMap<Molecule, Double> m = new HashMap<>();
                 for (Molecule key : hf.getReactants().keySet()) {
                     m.put(key, 1.0);

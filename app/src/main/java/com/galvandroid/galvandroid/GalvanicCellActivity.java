@@ -57,7 +57,7 @@ public class GalvanicCellActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_galvanic_cell);
 
-        Cell cell = (Cell) getIntent().getSerializableExtra("R");
+        final Cell cell = (Cell) getIntent().getSerializableExtra("R");
         TextView lm = (TextView) findViewById(R.id.metal1);
         TextView rm = (TextView) findViewById(R.id.metal2);
 
@@ -79,6 +79,8 @@ public class GalvanicCellActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectHRxnActivity.class);
+                i.putExtra("R", cell);
+                i.putExtra("b", 0);
                 startActivity(i);
             }
         });
@@ -87,6 +89,8 @@ public class GalvanicCellActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectHRxnActivity.class);
+                i.putExtra("R", cell);
+                i.putExtra("b", 1);
                 startActivity(i);
             }
         });

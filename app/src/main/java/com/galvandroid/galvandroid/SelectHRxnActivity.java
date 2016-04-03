@@ -9,6 +9,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.galvandroid.galvandroid.Chemistry.Cell;
 import com.galvandroid.galvandroid.Chemistry.HalfReaction;
 import com.galvandroid.galvandroid.Chemistry.StandardHalfReactionList;
 
@@ -26,6 +27,8 @@ public class SelectHRxnActivity extends AppCompatActivity implements SearchView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_hrxn);
 
+        final Cell cell = (Cell) getIntent().getSerializableExtra("R");
+        int b = (int) getIntent().getSerializableExtra("b");
         //setHasOptionsMenu(true);
 
         recList = (RecyclerView) findViewById(R.id.rec_list);
@@ -36,7 +39,7 @@ public class SelectHRxnActivity extends AppCompatActivity implements SearchView.
 
         StandardHalfReactionList.initialize(this);
         items = StandardHalfReactionList.getHalfreactions();
-        ca = new HalfReactionAdapter(items);
+        ca = new HalfReactionAdapter(items, cell, b);
         recList.setAdapter(ca);
     }
 

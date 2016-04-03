@@ -9,16 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.galvandroid.galvandroid.Chemistry.Cell;
+import com.galvandroid.galvandroid.Chemistry.CustomHalfReaction;
 import com.galvandroid.galvandroid.Chemistry.HalfReaction;
+import com.galvandroid.galvandroid.Chemistry.Molecule;
+import com.galvandroid.galvandroid.Chemistry.StandardHalfReactionList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class HalfReactionAdapter extends RecyclerView.Adapter<HalfReactionAdapter.HalfReactionViewHolder> {
     private List<HalfReaction> hreactionList;
+    private Cell c;
+    private int b;
 
-    public HalfReactionAdapter(List<HalfReaction> hreactionList) {
+    public HalfReactionAdapter(List<HalfReaction> hreactionList, Cell c, int b) {
         this.hreactionList = hreactionList;
+        this.c = c;
+        this.b = b;
     }
 
     public List<HalfReaction> getList() {
@@ -45,7 +54,20 @@ public class HalfReactionAdapter extends RecyclerView.Adapter<HalfReactionAdapte
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), GalvanicCellActivity.class);
-                i.putExtra("HalfReaction", hreaction);
+                HalfReaction hf = hreaction;
+                HashMap<Molecule, Double> m = new HashMap<>();
+                for (Molecule key : hf.getReactants().keySet()) {
+                    m.put(key, 1.0);
+                }
+                for (Molecule key : hf.getProducts().keySet()) {
+                    m.put(key, 1.0);
+                }
+                CustomHalfReaction chf = new CustomHalfReaction(hf, m);
+                if (b == 0)
+                    c.setLeft(chf);
+                else
+                    c.setRight(chf);
+                i.putExtra("R", c);
                 v.getContext().startActivity(i);
             }
         });

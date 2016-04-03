@@ -19,9 +19,10 @@ public class Cell implements Serializable {
 
     public String getLMolarity() {
         String ret = "";
-        HashMap<Molecule, Integer> r = left.getBaseReaction().getReactants();
         HashMap<Molecule, Double> m = left.getMolarities();
-        for (Molecule key : r.keySet()) {
+        for (Molecule key : m.keySet()) {
+            if (key.getCharge() == 0)
+                continue;
             ret += m.get(key) + " M " + key.toString() + "<br/>";
         }
         return ret;
@@ -29,13 +30,15 @@ public class Cell implements Serializable {
 
     public String getRMolarity() {
         String ret = "";
-        HashMap<Molecule, Integer> p = left.getBaseReaction().getProducts();
-        HashMap<Molecule, Double> m = left.getMolarities();
-        for (Molecule key : p.keySet()) {
+        HashMap<Molecule, Double> m = right.getMolarities();
+        for (Molecule key : m.keySet()) {
+            if (key.getCharge() == 0)
+                continue;
             ret += m.get(key) + " M " + key.toString() + "<br/>";
         }
         return ret;
     }
+
 
     public CustomHalfReaction getLeft() {
         return left;

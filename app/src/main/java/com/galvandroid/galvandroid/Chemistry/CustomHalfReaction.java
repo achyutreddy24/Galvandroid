@@ -43,8 +43,13 @@ public class CustomHalfReaction implements Serializable {
 
     public String getMetal() {
         HashMap<Molecule, Integer> reac = baseReaction.getReactants();
+        HashMap<Molecule, Integer> prod = baseReaction.getProducts();
 
         for (Molecule key : reac.keySet()) {
+            if (key.getCharge() == 0 && key.getForm().size() < 2)
+                return key.toString();
+        }
+        for (Molecule key : prod.keySet()) {
             if (key.getCharge() == 0 && key.getForm().size() < 2)
                 return key.toString();
         }
