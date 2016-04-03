@@ -64,6 +64,12 @@ public class GalvanicCellActivity extends AppCompatActivity {
         lm.setText(Html.fromHtml(cell.getlMetal()));
         rm.setText(Html.fromHtml(cell.getrMetal()));
 
+        TextView lmol = (TextView) findViewById(R.id.left_molarity);
+        TextView rmol = (TextView) findViewById(R.id.right_molarity);
+
+        lmol.setText(Html.fromHtml(cell.getLMolarity()));
+        rmol.setText(Html.fromHtml(cell.getRMolarity()));
+
         mContentView = findViewById(R.id.fullscreen_content);
 
         lBeaker = (ImageButton) findViewById(R.id.left_beaker);

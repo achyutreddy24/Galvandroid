@@ -1,6 +1,7 @@
 package com.galvandroid.galvandroid.Chemistry;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Cell implements Serializable {
     private CustomHalfReaction left;
@@ -14,6 +15,26 @@ public class Cell implements Serializable {
 
         lMetal = left.getMetal();
         rMetal = right.getMetal();
+    }
+
+    public String getLMolarity() {
+        String ret = "";
+        HashMap<Molecule, Integer> r = left.getBaseReaction().getReactants();
+        HashMap<Molecule, Double> m = left.getMolarities();
+        for (Molecule key : r.keySet()) {
+            ret += m.get(key) + " M " + key.toString() + "<br/>";
+        }
+        return ret;
+    }
+
+    public String getRMolarity() {
+        String ret = "";
+        HashMap<Molecule, Integer> p = left.getBaseReaction().getProducts();
+        HashMap<Molecule, Double> m = left.getMolarities();
+        for (Molecule key : p.keySet()) {
+            ret += m.get(key) + " M " + key.toString() + "<br/>";
+        }
+        return ret;
     }
 
     public CustomHalfReaction getLeft() {
