@@ -54,15 +54,10 @@ public class HalfReactionAdapter extends RecyclerView.Adapter<HalfReactionAdapte
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), GalvanicCellActivity.class);
-                HalfReaction hf = hreaction;
                 HashMap<Molecule, Double> m = new HashMap<>();
-                for (Molecule key : hf.getReactants().keySet()) {
-                    m.put(key, 1.0);
-                }
-                for (Molecule key : hf.getProducts().keySet()) {
-                    m.put(key, 1.0);
-                }
-                CustomHalfReaction chf = new CustomHalfReaction(hf, m);
+                for (Molecule key : hreaction.getReactants().keySet()) m.put(key, 1.0);
+                for (Molecule key : hreaction.getProducts().keySet()) m.put(key, 1.0);
+                CustomHalfReaction chf = new CustomHalfReaction(hreaction, m);
                 if (b == 0)
                     c.setLeft(chf);
                 else
