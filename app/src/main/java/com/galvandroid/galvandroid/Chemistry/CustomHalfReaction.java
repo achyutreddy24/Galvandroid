@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class CustomHalfReaction{
     private HalfReaction baseReaction;
-    private HashMap<Molecule, Float> molarities;
+    private HashMap<Molecule, Double> molarities;
     private int multiplier;
 
-    public CustomHalfReaction(HalfReaction hf, HashMap<Molecule, Float> m) {
+    public CustomHalfReaction(HalfReaction hf, HashMap<Molecule, Double> m) {
         baseReaction = hf;
         molarities = m;
     }
@@ -20,11 +20,15 @@ public class CustomHalfReaction{
         this.baseReaction = baseReaction;
     }
 
-    public HashMap<Molecule, Float> getMolarities() {
+    public HashMap<Molecule, Double> getMolarities() {
         return molarities;
     }
 
-    public void setMolarities(HashMap<Molecule, Float> molarities) {
+    public double getReactantMolarity(Molecule x) {
+        return molarities.get(x);
+    }
+
+    public void setMolarities(HashMap<Molecule, Double> molarities) {
         this.molarities = molarities;
     }
 

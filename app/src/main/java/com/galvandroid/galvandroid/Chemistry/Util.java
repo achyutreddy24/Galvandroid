@@ -145,8 +145,6 @@ public class Util {
     }
 
     public static ArrayList<Molecule> getAqueous(CustomHalfReaction f){
-        HalfReaction target = f.getBaseReaction();
-        double conc =0;
         ArrayList<Molecule> aqueous = new ArrayList<Molecule>();
         for (Molecule key : f.getMolarities().keySet()){
             if (key.getCharge() !=0)
@@ -155,13 +153,12 @@ public class Util {
         return aqueous;
     }
 
-    public static double getAqueousconc(ArrayList<Molecule> a){
+    public static double getAqueousconc(CustomHalfReaction f, ArrayList<Molecule> a) {
         double conc = 1;
+        for (int i = 0; i < a.size(); i++)
+            conc *= f.getReactantMolarity(a.get(i));
 
-        for (int f =0;f<a.size();f++)
-            conc = conc*conc;
-
-        return 1.0;
+        return conc;
     }
 
 }
