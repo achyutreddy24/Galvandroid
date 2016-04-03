@@ -153,13 +153,17 @@ public class Util {
         return aqueous;
     }
 
+
+
     public static double getAqueousconc(CustomHalfReaction f, ArrayList<Molecule> a) {
         double conc = 1;
         for (int i = 0; i < a.size(); i++)
-            conc *= f.getReactantMolarity(a.get(i));
+            conc *= Math.pow(f.getReactantMolarity(a.get(i)), f.getMultiplier());
 
         return conc;
     }
+
+
 
 }
 
