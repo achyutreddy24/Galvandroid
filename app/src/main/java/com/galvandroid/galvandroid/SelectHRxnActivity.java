@@ -63,10 +63,10 @@ public class SelectHRxnActivity extends AppCompatActivity implements SearchView.
         query = query.toLowerCase();
 
         final List<HalfReaction> filteredModelList = new ArrayList<>();
-        for (HalfReaction item : items) {
-            final String text = item.toString().toLowerCase();
+        for (HalfReaction hf : items) {
+            final String text = hf.toString().toLowerCase();
             if (text.contains(query)) {
-                filteredModelList.add(item);
+                filteredModelList.add(hf);
             }
         }
         return filteredModelList;

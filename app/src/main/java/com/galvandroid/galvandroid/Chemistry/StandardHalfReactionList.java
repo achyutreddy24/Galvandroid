@@ -12,6 +12,8 @@ public class StandardHalfReactionList {
     public static void initialize(Context c) {
         AtomConstants.initialize(c);
         halfreactions = new ArrayList<>();
+        halfreactions.add(parseHalfReaction("2H1+1 = 1H2+0", 2, 0)); // Standard
+
         halfreactions.add(parseHalfReaction("1F2+0 = 2F1-1", 2, 2.87));
         halfreactions.add(parseHalfReaction("1Ag1+2 = 1Ag1+1", 1, 1.99));
         halfreactions.add(parseHalfReaction("1Co1+3 = 1Co1+2", 1, 1.82));
@@ -23,7 +25,6 @@ public class StandardHalfReactionList {
         halfreactions.add(parseHalfReaction("1Ag1Cl1+0 = 1Ag1+0 + 1Cl1-1", 1, 0.22));
         halfreactions.add(parseHalfReaction("1S1O4-2 + 4H1+1 = 1H2S1O3+0 + 1H2O1+0", 2, 0.2));
         halfreactions.add(parseHalfReaction("1Cu1+2 = 1Cu1+1", 1, 0.16));
-        halfreactions.add(parseHalfReaction("2H1+1 = 1H2+0", 2, 0)); // Standard
         halfreactions.add(parseHalfReaction("1Fe1+3 = 1Fe1+0", 3, -0.036));
         halfreactions.add(parseHalfReaction("1Pb1+2 = 1Pb1+0", 2, -0.13));
         halfreactions.add(parseHalfReaction("1Sn1+2 = 1Sn1+0", 2, -0.14));

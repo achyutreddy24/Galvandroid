@@ -1,6 +1,8 @@
 package com.galvandroid.galvandroid.Chemistry;
 
-public class Atom {
+import java.io.Serializable;
+
+public class Atom implements Serializable {
     private String symbol;
     private String name;
     private int atomic_number;

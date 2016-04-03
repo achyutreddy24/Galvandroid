@@ -1,11 +1,11 @@
 package com.galvandroid.galvandroid.Chemistry;
 
-import android.text.Html;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Molecule {
+public class Molecule implements Serializable {
     private LinkedHashMap<Atom, Integer> form;
     private int charge;
 

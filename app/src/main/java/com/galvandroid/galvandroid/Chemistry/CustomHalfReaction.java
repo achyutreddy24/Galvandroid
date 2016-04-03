@@ -1,8 +1,9 @@
 package com.galvandroid.galvandroid.Chemistry;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class CustomHalfReaction{
+public class CustomHalfReaction implements Serializable {
     private HalfReaction baseReaction;
     private HashMap<Molecule, Double> molarities;
     private int multiplier;
@@ -38,5 +39,15 @@ public class CustomHalfReaction{
 
     public void setMultiplier(int multiplier) {
         this.multiplier = multiplier;
+    }
+
+    public String getMetal() {
+        HashMap<Molecule, Integer> reac = baseReaction.getReactants();
+
+        for (Molecule key : reac.keySet()) {
+            if (key.getCharge() == 0 && key.getForm().size() < 2)
+                return key.toString();
+        }
+        return "Pt";
     }
 }
