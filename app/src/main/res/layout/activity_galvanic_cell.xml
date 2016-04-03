@@ -15,6 +15,18 @@
         >
 
         <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:id="@+id/salt_bridge"
+            android:src="@drawable/salt_bridge"
+            android:layout_alignBottom="@+id/left_molarity"
+            android:layout_toLeftOf="@+id/metal2"
+            android:layout_toRightOf="@+id/metal1"
+            android:layout_toEndOf="@+id/metal1"
+            android:layout_toStartOf="@+id/metal2"
+            android:layout_marginBottom="50dp"/>
+
+        <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,6 +122,52 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#000000"
             android:paddingBottom="5dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:id="@+id/electron"
+            android:src="@drawable/electron_none"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/metal1"
+            android:layout_alignStart="@+id/metal1"
+            android:layout_above="@+id/imageView2"
+            android:layout_alignRight="@+id/metal2"
+            android:layout_alignEnd="@+id/metal2"
+            android:layout_marginTop="45dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/voltage"
+            android:layout_alignBottom="@+id/electron"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/right_label"
+            android:layout_below="@+id/salt_bridge"
+            android:layout_toLeftOf="@+id/right_beaker"
+            android:layout_toStartOf="@+id/right_beaker"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/left_label"
+            android:textColor="#000000"
+            android:layout_alignTop="@+id/right_label"
+            android:layout_toRightOf="@+id/left_beaker"
+            android:layout_toEndOf="@+id/left_beaker"
+            android:layout_marginLeft="-20dp"/>
 
     </RelativeLayout>
 

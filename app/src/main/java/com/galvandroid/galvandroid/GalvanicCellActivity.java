@@ -7,16 +7,22 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.galvandroid.galvandroid.Chemistry.Cell;
+import com.galvandroid.galvandroid.Chemistry.Util;
 
 
 public class GalvanicCellActivity extends AppCompatActivity {
 
     private ImageButton lBeaker;
     private ImageButton rBeaker;
+    private TextView lLabel;
+    private TextView rLabel;
+    private TextView voltage;
+
 
     /**
      * Some older devices needs a small delay between UI widget updates
@@ -74,6 +80,22 @@ public class GalvanicCellActivity extends AppCompatActivity {
 
         lBeaker = (ImageButton) findViewById(R.id.left_beaker);
         rBeaker = (ImageButton) findViewById(R.id.right_beaker);
+        lLabel = (TextView) findViewById(R.id.right_label);
+        rLabel = (TextView) findViewById(R.id.left_label);
+        voltage = (TextView) findViewById(R.id.voltage);
+
+        double ared = cell.getLeft().getBaseReaction().getReductionPotential();
+        double bred = cell.getRight().getBaseReaction().getReductionPotential();
+
+        if (ared >= bred) {
+            lLabel.setText("Anode");
+            rLabel.setText("Cathode");
+        } else {
+            lLabel.setText("Cathode");
+            rLabel.setText("Anode");
+        }
+
+        voltage.setText("ε° " + String.valueOf(Util.getNonStandard(cell.getLeft(), cell.getRight())));
 
         lBeaker.setOnClickListener(new View.OnClickListener() {
             @Override
